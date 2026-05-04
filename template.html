@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>2 Column Docs</title>
+<style>
+body-old {
+  margin:0;
+  font-family: Arial, sans-serif;
+  display:grid;
+  grid-template-columns:260px 1fr;
+  height:100vh;
+  background:#282a36;
+  color:#f8f8f2;
+}
+
+body {
+  margin:0;
+  font-family: Garamond, serif;
+  font-size:19px;
+  font-weight:500;
+  line-height:1.7;
+  letter-spacing:0.2px;
+  display:grid;
+  grid-template-columns:260px 1fr;
+  height:100vh;
+  background:#282a36;
+  color:#f8f8f2;
+}
+
+.sidebar {
+  background:#21222c;
+  border-right:1px solid #44475a;
+  padding:15px;
+  overflow:auto;
+}
+
+.content {
+  padding:20px;
+  overflow:auto;
+  background:#282a36;
+  color:#f8f8f2;
+}
+
+.sidebar a {
+  text-decoration:none;
+  color:#bd93f9;
+  display:block;
+  padding:6px;
+}
+
+.sidebar a:hover {
+  color:#ff79c6;
+}
+
+h1,h2,h3,h4 {
+  color:#50fa7b;
+}
+
+pre {
+  background:#44475a;
+  padding:10px;
+  border-radius:6px;
+  overflow:auto;
+  color:#f8f8f2;
+}
+
+table {
+  border-collapse: collapse;
+  width:100%;
+}
+
+td, th {
+  border:1px solid #44475a;
+  padding:8px;
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar" id="nav"></div>
+<div class="content" id="content">
+<body>
+
+
+
+
+
+</body>
+</div>
+
+<script>
+function generateNav() {
+  const nav = document.getElementById('nav');
+  const h1s = document.querySelectorAll('h1');
+  const h2s = document.querySelectorAll('h2');
+
+  let html = "<h3>All Sections</h3>";
+
+  // include ALL h1 (no filtering)
+  h1s.forEach(h => {
+    html += `<a href="#${h.id}" style="font-family: Arial, Helvetica, sans-serif;letter-spacing: 0;line-height: 1; font-size:14px;font-weight:200;">${h.innerText}</a>`;
+  });
+
+  html += "<hr/><h3>Topics</h3>";
+
+  h2s.forEach((h,i) => {
+    if(!h.id){
+      h.id = "section-"+i;
+    }
+    html += `<a href="#${h.id}" style="font-family: Arial, Helvetica, sans-serif;letter-spacing: 0;line-height: 1;font-size:14px;font-weight:200; ">${h.innerText}</a>`;
+  });
+
+  nav.innerHTML = html;
+}
+
+generateNav();
+</script>
+</body>
+</html>
